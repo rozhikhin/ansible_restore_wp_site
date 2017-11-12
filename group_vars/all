@@ -1,0 +1,41 @@
+---
+#Common variables for Ansible
+#If site in develop then true. If in production - false
+develop: true
+# Path to ssh key
+ssh_key_path: /home/alex/.ssh/sshkeys/sec_vps_rsa_id.pub
+# Variables for  NGINX
+vhosts_path: '/var/www'
+nginx_port: 80
+www_user: vagrant # Only for develop with Vagrant - In order for the synced_folder to function correctly
+#
+# Variables for site 
+client_name: test_mebel_local
+client_site_name: test.mebel.local
+client_user_name: test_mebel_local
+client_dbuser_name: test_mebel_local
+client_dbname: test_mebel_local
+# Variables for MariaDB
+mysql_root_file:  '/home/alex/projects/mysql_root'
+mysql_root_password: "{{ lookup('file', mysql_root_file ) }}"
+# Varables for Wordpress
+wp_version: '4.8.3'
+# Variables for fail2ban
+ignoreip_fail2ban: 127.0.0.1/8 192.168.77.130
+# Variable for recovery site
+# # if changeDomain == true - the site will recovery with another domain name
+changeDomain: true
+# Backup folder on the local host
+#local_backup_folder: ~/projects/test.mebel.local/backup
+local_backup_folder: backup
+# Variables for the site which will recovery
+to_recovery_site_name: mebel.local
+#to_recovery_dbuser_name: test_mebel_local
+#to_recovery_dbname: test_mebel_local
+# Site backup file to recovery
+site_bakup_name: WP_mebel.local-2017-11-12__18-46
+# DB backup file to recovery
+db_backup_name: DB_mebel_local_2017-11-12__18-46.sql
+# Type bacup
+backup_type: .zip
+#
